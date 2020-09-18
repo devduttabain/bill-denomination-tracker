@@ -1,8 +1,12 @@
-import React, { useContext, useEffect } from 'react';
-import DenominationCounter from './components/DenominationCounter';
+import React, { useContext, useEffect } from "react";
+import DenominationCounter from "./components/DenominationCounter";
 // import logo from './logo.svg';
-import './nap.css';
-import { StockContext, StockProvider, StockUpdateActionTypes } from './providers/StockProvider';
+import "./nap.css";
+import {
+  StockContext,
+  StockProvider,
+  StockUpdateActionTypes
+} from "./providers/StockProvider";
 
 function App() {
   return (
@@ -37,10 +41,11 @@ const SubApp: React.FC = ({ children }) => {
       type: StockUpdateActionTypes.init,
       payload: {
         RN10: 0,
-        RN20: 0,
+        RN20: 0
       }
     });
-  }, [])
+  }, []);
+
   return (
     <>
       {test ? <p>Test</p> : <></>}
@@ -48,5 +53,5 @@ const SubApp: React.FC = ({ children }) => {
       <DenominationCounter type="RN20" />
       {/* {children} */}
     </>
-  )
-}
+  );
+};
