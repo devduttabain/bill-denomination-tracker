@@ -10,30 +10,26 @@ interface DenominationCounterProps {
 function DenominationCounter({ type }: DenominationCounterProps) {
     const {
         stock,
-        // stockIsDeductable,
         updateStock
     } = useContext(StockContext);
     const [denominationCount, setDenominationCount] = useState(0);
     const handleOnIncreaseClick = () => {
-        // setDenominationCount(denominationCount + 1);
-        // alert('should work');
         updateStock({
             type: StockUpdateActionTypes.addOne,
             payload: type
         });
     };
     const handleOnDecreaseClick = () => {
-        // setDenominationCount(denominationCount - 1);
         updateStock({
             type: StockUpdateActionTypes.deductOne,
             payload: type
         });
     };
-    // var denominationCount = 0;
+    
     useEffect(() => {
-        // denominationCount = stock[type] || 0;
         setDenominationCount(stock[type] || 0);
-    }, [stock, type])
+    }, [stock]);
+
     return (
         <div className="eachDenominations">
             <div className="increaseCountWrapper"><button className="increaseCountBtn" onClick={handleOnIncreaseClick}>+</button></div>

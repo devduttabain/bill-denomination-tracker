@@ -5,7 +5,6 @@ import {
   DenominationTypes
 } from "../types/denominations";
 
-// export const DenominationStock: DenominationStockType = {};
 type StockContextProps = {
   stock: DenominationStockType;
   updateStock: Dispatch<DenominationStockUpdateAction>;
@@ -84,7 +83,6 @@ function updatedStockState(
   action: "add" | "remove" = "add"
 ): StockContextProps {
   var isUpdatable = stockIsUpdatable(state, type, changeBy, action);
-  //   var newCount = updatedCount(state, type, changeBy, action);
   if (isUpdatable) {
     return {
       ...state,
@@ -99,8 +97,6 @@ const updateStockReducer = (
   state: StockContextProps,
   action: DenominationStockUpdateAction
 ): StockContextProps => {
-  // const { payload } = action;
-  // alert('workin')
   switch (action.type) {
     case StockUpdateActionTypes.init:
       return {

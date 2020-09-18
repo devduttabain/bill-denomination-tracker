@@ -11,32 +11,25 @@ import {
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <StockProvider>
+      <Providers>
         <SubApp />
-      </StockProvider>
+      </Providers>
     </div>
   );
 }
 
 export default App;
-
+const Providers: React.FC = ({ children }) => {
+  return (
+    <StockProvider>
+      {children}
+    </StockProvider>
+  );
+}
 const SubApp: React.FC = ({ children }) => {
   const { updateStock, test } = useContext(StockContext);
   useEffect(() => {
+    console.log('loading');
     updateStock({
       type: StockUpdateActionTypes.init,
       payload: {
