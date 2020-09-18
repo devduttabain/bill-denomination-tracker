@@ -6,8 +6,9 @@ import { DenominationTypes } from '../types/denominations';
 // import './nap.css';
 interface DenominationCounterProps {
     type: DenominationTypes;
+    label: string;
 }
-function DenominationCounter({ type }: DenominationCounterProps) {
+function DenominationCounter({ type, label }: DenominationCounterProps) {
     const {
         stock,
         updateStock
@@ -25,7 +26,7 @@ function DenominationCounter({ type }: DenominationCounterProps) {
             payload: type
         });
     };
-    
+
     useEffect(() => {
         setDenominationCount(stock[type] || 0);
     }, [stock]);
@@ -33,8 +34,9 @@ function DenominationCounter({ type }: DenominationCounterProps) {
     return (
         <div className="eachDenominations">
             <div className="increaseCountWrapper"><button className="increaseCountBtn" onClick={handleOnIncreaseClick}>+</button></div>
-            <div className="increaseCountWrapper">
-                {denominationCount}
+            <div className="labelWrapper">
+                <code>{label}</code>
+                <pre>{denominationCount}</pre>
             </div>
             <div className="decreaseCountWrapper">
                 <button className="decreaseCountBtn" onClick={handleOnDecreaseClick} disabled={denominationCount === 0}>-</button>

@@ -42,8 +42,8 @@ const SubApp: React.FC = ({ children }) => {
   return (
     <>
       {test ? <p>Test</p> : <></>}
-      <DenominationCounter type="RN10" />
-      <DenominationCounter type="RN20" />
+      <DenominationCounter type="RN10" label="₹10" />
+      <DenominationCounter type="RN20" label="₹20" />
       {/* {children} */}
     </>
   );
